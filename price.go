@@ -36,7 +36,7 @@ func (a *Price) UnmarshalJSON(data []byte) error {
 	}
 
 	// remove ',' from string value
-	stringValue = strings.Replace(stringValue, ",", "", -1)
+	stringValue = strings.ReplaceAll(stringValue, ",", "")
 	floatValue, err = strconv.ParseFloat(stringValue, 64)
 	if err != nil {
 		return err
