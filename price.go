@@ -3,10 +3,11 @@ package goprice
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/leekchan/accounting"
 	"math"
 	"strconv"
 	"strings"
+
+	"github.com/leekchan/accounting"
 )
 
 const (
@@ -45,7 +46,7 @@ func (a *Price) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (a *Price) Add(value *Price)  {
+func (a *Price) Add(value *Price) {
 	newPrice := *a + *value
 	*a = newPrice
 }
@@ -93,7 +94,7 @@ func (a Price) ToAdyenInt() int {
 	return adyenAmount
 }
 
-func (a Price) round(val, roundOn float64, precision int) float64 {
+func (Price) round(val, roundOn float64, precision int) float64 {
 	var round float64
 	pow := math.Pow(10, float64(precision))
 	digit := pow * val
@@ -117,7 +118,6 @@ func (a Price) priceStringFormatAtCheckout(val float64, precision int) string {
 }
 
 // beautyMoney format 2.00 to 2
-func (a Price) beautyMoney(price string) string {
+func (Price) beautyMoney(price string) string {
 	return strings.Replace(price, ".00", "", 1)
 }
-
